@@ -38,10 +38,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .formLogin()
                     .loginPage("/auth/user/login")
-                    //.loginProcessingUrl("/auth/user/login")
-                    .defaultSuccessUrl("/")
-                .rememberMe().tokenValiditySeconds(60 * 60 * 7)
-                .userDetailService(principalDetailService);
+                    .loginProcessingUrl("/auth/user/login")
+                    .defaultSuccessUrl("/");
+
+        http
+                .rememberMe().tokenValiditySeconds(60*60*7)
+                .userDetailsService(principalDetailService);
     }
 
     @Bean

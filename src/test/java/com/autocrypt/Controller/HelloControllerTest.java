@@ -1,5 +1,6 @@
 package com.autocrypt.Controller;
 
+import com.autocrypt.Controller.HelloController;
 import com.autocrypt.config.SecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,9 +18,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = HelloController.class,
-    excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)
-    })
+        excludeFilters = {
+                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)
+        }
+)
 public class HelloControllerTest {
 
     @Autowired
@@ -28,7 +30,7 @@ public class HelloControllerTest {
     @Test
     @WithMockUser
     public void hello_Test() throws Exception {
-        String hello = "hello Spring Boot!";
+        String hello = "hello spring boot";
 
         mvc.perform(get("/hello"))
                 .andExpect(status().isOk())
@@ -38,13 +40,13 @@ public class HelloControllerTest {
     @Test
     @WithMockUser
     public void helloDto_Test() throws Exception {
-        String name = "jihoon";
+        String name = "minsu";
         String nickname = "babo";
 
         mvc.perform(
-                get("/hello/dto")
-                        .param("name", name)
-                        .param("nickname", nickname))
+                        get("/hello/dto")
+                                .param("name", name)
+                                .param("nickname", nickname))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", is(name)))
                 .andExpect(jsonPath("$.nickname", is(nickname)));
