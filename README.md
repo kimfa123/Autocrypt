@@ -1,3 +1,5 @@
+![autocrypt](https://user-images.githubusercontent.com/89339349/167676187-79322376-2755-4e30-8f69-0d73c91873aa.jpeg)
+
 > ## 과제 내용
 
 ## REST API 기반의 게시판 기능 구현 -> 화면 없이 API를 통한 기능적 구현 
